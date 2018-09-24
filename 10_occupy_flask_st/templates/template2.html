@@ -2,10 +2,14 @@
 <html>
   <head>
     <title>{{ title }}</title>
-    <h1>{{ heading }}</h1>
+    <h3>{{ heading }}</h3>
+    <br>
   </head>
   <body>
-    <table style="width:100%">
+    {{ occupation }}
+      <br>
+      <br>
+    <table style="width:500px" border="1px solid black">
       <tr>
         <th>Occupation</th>
         <th>Percent</th>
@@ -15,7 +19,6 @@
         <td>{{item}}</td>
         <td>{{collection[item]}}</td>
       </tr>
-      {% endfor %}
-    </table>
+    {% endfor %}
   </body>
 </html>
