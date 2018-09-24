@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- title of tab -->
     <title>{{ title }}</title>
+    <!-- description of the file:
+    This file selects a random occupation from the table below and displays it at the top. -->
     <h3>{{ heading }}</h3>
     <br>
   </head>
   <body>
+    <!-- randomly selected occupation -->
     {{ occupation }}
-      <br>
-      <br>
+    <br>
+    <br>
+    <!-- makes the table 500px wide and with a 1 px border -->
     <table style="width:500px" border="1px solid black">
+      <!-- headings of each column -->
       <tr>
         <th>Occupation</th>
         <th>Percent</th>
       </tr>
+      <!-- goes through occupations dictionary in the python file and turns it into table columns -->
       {% for item in collection %}
       <tr>
+        <!-- the occupations column -->
         <td>{{item}}</td>
+        <!-- the perent column -->
         <td>{{collection[item]}}</td>
       </tr>
     {% endfor %}
