@@ -1,6 +1,7 @@
 #Anton Danylenko
 #SoftDev
-#09-27-18
+#13 Echo Echo Echo
+#09-28-18
 
 from flask import Flask, render_template, request
 app = Flask(__name__)
@@ -9,12 +10,16 @@ app = Flask(__name__)
 def home():
     return render_template('inputTemplate.html')
 
-@app.route('/auth')
+@app.route('/auth', methods=['POST'])
 def authenticate():
     print(app)
     print(request)
     print(request.args)
-    return render_template('outputTemplate.html')
+    print(request.method)
+    usrname=request.form["usrname"]
+    return render_template('outputTemplate.html',
+                            username = usrname,
+                            method = request.method)
 
 if __name__ == "__main__":
     app.debug = True
