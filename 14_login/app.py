@@ -17,39 +17,27 @@ app = Flask(__name__)
 
 @app.route("/")
 def start():
-    #name = 'temp'
-    #pas = 'temp2'
-    #if (request.cookies.get("usrname"))
-    print(request.cookies.get("usrname"))
-    print(request.cookies.get("pswrd"))
-    if ((request.cookies.get("usrname") == "addis") and (request.cookies.get("pswrd") == "ababa")):
-        return render_template("auth.html", a = usr_input["Username"])
-    else:
-        return render_template("login.html")
+    #if ((session["usrname"] == "addis") and (session["pswrd"] == "ababa")):
+        #return render_template("auth.html", a = session["usrname"])
+    #else:
+    return render_template("login.html")
 
 
 @app.route("/auth", methods = ['GET'])
 def authenticate():
     #print(url_for('authenticate'))
-    usr_input["Username"] = request.args["Username"]
-    usr_input["Password"] = request.args["Password"]
-    print(request.args["Username"])
-    print(request.args["Password"])
-    resp = make_response(render_template('auth.html', a = usr_input["Username"]))
-    resp.set_cookie('usrname', usr_input["Username"])
-    resp.set_cookie('pswrd', usr_input["Password"])
-    print(request.cookies.get("usrname"))
-    print(request.cookies.get("pswrd"))
-    if (request.args['Username'] == 'addis' and request.args['Password'] == 'ababa'):
+    session["usrname"] = request.args["Username"]
+    session["pswrd"] = request.args["Password"]
+    if (session["usrname"] == 'addis' and session["pswrd"] == 'ababa'):
         return redirect(url_for("start"))
     else:
         return redirect(url_for('display_login'))
 
 @app.route("/again")
 def display_login():
-    if(usr_input["Username"] != "addis" and usr_input["Password"] != "ababa"):
+    if(session["usrname"] != "addis" and session["pswrd"] != "ababa"):
         return render_template("failed.html", a  = "Username and Password ")
-    elif(usr_input["Username"] != "addis"):
+    elif(session["usrname"] != "addis"):
         return render_template("failed.html", a = "Username")
     else:
         return render_template("failed.html", a = "Password")
