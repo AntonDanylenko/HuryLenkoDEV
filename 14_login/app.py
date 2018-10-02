@@ -33,9 +33,13 @@ def authenticate():
     #print(url_for('authenticate'))
     usr_input["Username"] = request.args["Username"]
     usr_input["Password"] = request.args["Password"]
+    print(request.args["Username"])
+    print(request.args["Password"])
     resp = make_response(render_template('auth.html', a = usr_input["Username"]))
     resp.set_cookie('usrname', usr_input["Username"])
     resp.set_cookie('pswrd', usr_input["Password"])
+    print(request.cookies.get("usrname"))
+    print(request.cookies.get("pswrd"))
     if (request.args['Username'] == 'addis' and request.args['Password'] == 'ababa'):
         return redirect(url_for("start"))
     else:
