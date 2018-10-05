@@ -19,9 +19,6 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def start():
-    #if ((session["usrname"] == "addis") and (session["pswrd"] == "ababa")):
-        #return render_template("auth.html", a = session["usrname"])
-    #else:
     return render_template("login.html")
 
 @app.route("/logout")
@@ -33,7 +30,6 @@ def back():
 
 @app.route("/auth", methods = ['GET'])
 def authenticate():
-    #print(url_for('authenticate'))
     session["usrname"] = request.args["Username"]
     session["pswrd"] = request.args["Password"]
     if (session["usrname"] == 'addis' and session["pswrd"] == 'ababa'):
@@ -52,8 +48,6 @@ def display_login():
 
 @app.route("/display_login")
 def success():
-    #print(request.args)
-    # return render_template("auth.html", a = request.args['Username'])
     return render_template("auth.html", a = session["usrname"])
 
 
