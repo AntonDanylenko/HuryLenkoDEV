@@ -18,7 +18,7 @@ c = db.cursor()               #facilitate db ops
 with open('raw/courses.csv') as csvfile: #open csv file and store as DictReader
     reader = csv.DictReader(csvfile) #{header: element, header2, element2,..}
     command = 'CREATE TABLE courses (code TEXT, id INTEGER, mark INTEGER)'
-    c.execute(command)
+    #c.execute(command)
     for lines in reader:
         #print(lines.keys())
         #print(lines)
@@ -30,7 +30,7 @@ with open('raw/courses.csv') as csvfile: #open csv file and store as DictReader
 with open('raw/occupations.csv') as csvfile: #open csv file and store as DictReader
     reader = csv.DictReader(csvfile) #{header: element, header2, element2,..}
     command = 'CREATE TABLE occupations (Job Class TEXT, Percentage INTEGER)'
-    c.execute(command)
+    #c.execute(command)
     for lines in reader:
         cleaned_job = lines['Job Class'].strip('\"')
         command = 'INSERT INTO occupations VALUES(\"{}\",{})'.format(cleaned_job, float(lines['Percentage']))
@@ -39,7 +39,7 @@ with open('raw/occupations.csv') as csvfile: #open csv file and store as DictRea
 with open('raw/peeps.csv') as csvfile: #open csv file and store as DictReader
     reader = csv.DictReader(csvfile) #{header: element, header2, element2,..}
     command = 'CREATE TABLE peeps (name TEXT, age INTEGER, id INTEGER)'
-    c.execute(command)
+    #c.execute(command)
     for lines in reader:
         command = 'INSERT INTO peeps VALUES(\"{}\",{},{})'.format(lines['name'], int(lines['age']), int(lines['id']))
         c.execute(command)
