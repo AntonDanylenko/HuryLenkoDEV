@@ -52,8 +52,8 @@ command = "CREATE TABLE if not exists peeps_avg(id INTEGER, average INTEGER)"
 c.execute(command)
 for key in pplList:
     params = (pplList[key][0], pplList[key][1])
-    #command = "INSERT INTO peeps_avg VALUES()"
-    #c.execute(command) SEND HELP
+    command = 'INSERT INTO peeps_avg VALUES({},{})'.format(int(pplList[key][0]), int(pplList[key][1]))
+    c.execute(command)
 
 command = """SELECT * FROM peeps_avg"""
 c.execute (command)
