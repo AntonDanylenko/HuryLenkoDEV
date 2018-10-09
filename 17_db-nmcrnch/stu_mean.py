@@ -14,43 +14,40 @@ db = sqlite3.connect(DB_FILE)
 c = db.cursor()
 
 
-def name_to_ID(name):
-    command = """SELECT name, id FROM roster"""
-    c.execute(command)
-    for row in c:
-        if name == row[0]:
-            return row[0]
+#def name_to_ID(name):
+#    c.execute("""SELECT name, id FROM roster""")
+#    for row in c:
+#        if name == row[0]:
+#            return row[0]
 
 def stu_name():
-    command = """SELECT name, id FROM roster"""
-    c.execute(command)
+    c.execute("""SELECT name, id FROM roster""")
     return c.fetchall()
-#print(stu_name())
 
+#print(stu_name())
 
 #Prints out course grades per student via matching roster.id to courses.id
 def grades():
     grades_str = ""
-    command = """SELECT name, mark
+    c.execute("""SELECT name, mark
     FROM roster, courses
-    WHERE courses.id = roster.id"""
-    c.execute(command)
+    WHERE courses.id = roster.id""")
     for row in c:
         grades_str += row[0] + " "  + str(row[1]) + " " +  "\n"
     return grades_str
-print(grades())
 
-#Prins out averages by student names and their averages
+#print(grades())
+
+#Prints out averages by student names and their averages
 
 def avgs_make():
     avgs = {}
     sum = 0
     lastPer = ""
     numCourses = 0
-    command = """SELECT name, mark
+    c.execute("""SELECT name, mark
         FROM roster, courses
-        WHERE courses.id = roster.id"""
-    c.execute(command)
+        WHERE courses.id = roster.id""")
     for row in c:
         if row[0] != lastPer:
             if numCourses != 0:
@@ -62,18 +59,17 @@ def avgs_make():
         numCourses += 1
     avgs[lastPer] = int(sum/numCourses) #cuz last person does't have a row after to test with
     return avgs
-print (avgs_make())
+
+#print (avgs_make())
 
 def peeps_table():
-    command = """CREATE TABLE peeps_avg(id INTEGER, avgs INTEGER)"""
     students = stu_name()
-    c.execute(command)
+    c.execute("""CREATE TABLE peeps_avg(id INTEGER, avgs INTEGER)""")
     avgsList = avgs_make()
     for person in students:
         avgs = avgsList[person[0]]
         id = person[1]
-        command = "INSERT INTO peeps_avg VALUES({},{})".format(id, avgs)
-        c.execute(command)
+        c.execute("INSERT INTO peeps_avg VALUES({},{})".format(id, avgs))
 
 peeps_table()
 # db.commit()
@@ -83,13 +79,10 @@ peeps_table()
 #     print (row)
 
 def add_Row():
-    code = 'code'
-    command = "INSERT INTO courses VALUES('code', 100, 90);"
-    c.execute(command)
+    c.execute("INSERT INTO courses VALUES('code', 100, 90);")
 
 add_Row()
 db.commit()
-command = """SELECT * FROM courses"""
-c.execute (command)
+c.execute ("""SELECT * FROM courses""")
 for row in c:
     print (row)
