@@ -84,7 +84,7 @@ peeps_table()
 
 def add_Row():
     code = 'code'
-    #command = "INSERT INTO courses (code, mark, id) VALUES(code, 100, 90);"
+    command = "INSERT INTO courses VALUES('code', 100, 90);"
     c.execute(command)
 
 add_Row()
