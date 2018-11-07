@@ -69,7 +69,7 @@ def peeps_table():
     for person in students:
         avgs = avgsList[person[0]]
         id = person[1]
-        c.execute("INSERT INTO peeps_avg VALUES({},{})".format(id, avgs))
+        c.execute("INSERT INTO peeps_avg VALUES(?,?)", (id, avgs))
 
 peeps_table()
 # db.commit()
