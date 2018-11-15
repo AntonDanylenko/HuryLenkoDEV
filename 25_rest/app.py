@@ -13,8 +13,8 @@ def home():
     response = urllib.request.urlopen("http://developer.epa.gov/api/index.php/api_repellent?api=repellent")
     respRead = response.read()
     data = json.loads(respRead)
-    #print(data)
-    return render_template('app.html', pic = data['url'])
+    print(data)
+    return render_template('app.html', collection = data['api_repellent'])
 
 if __name__ == "__main__":
     app.debug = True

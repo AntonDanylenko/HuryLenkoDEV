@@ -5,6 +5,36 @@
   </head>
   <body>
     <h1>Insect Repellents are cool:</h1>
-    <img src={{ pic }}>
+    <table style="width:500px" border="1px solid black">
+      <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Hourly Time (mosquitoes)</th>
+        <th>Hourly Time (ticks)</th>
+        <th>Active Ingredient</th>
+        <th>AI Percent</th>
+        <th>Company Name</th>
+        <th>EPA Reg</th>
+      </tr>
+      {% for item in collection['records'] %}
+      <tr>
+        <!-- the id column -->
+        <td>{{item[0]}}</td>
+        <!-- the product name column -->
+        <td>{{item[1]}}</td>
+        <!-- the hourly time mosquitoes column -->
+        <td>{{item[2]}}</td>
+        <!-- the hourly time ticks column -->
+        <td>{{item[3]}}</td>
+        <!-- the active ingredient column -->
+        <td>{{item[4]}}</td>
+        <!-- the ai percent column -->
+        <td>{{item[5]}}</td>
+        <!-- the company name column -->
+        <td>{{item[6]}}</td>
+        <!-- the epa reg column -->
+        <td>{{item[7]}}</td>
+      </tr>
+      {% endfor %}
   </body>
 </html>
