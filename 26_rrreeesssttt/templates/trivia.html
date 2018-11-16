@@ -1,0 +1,26 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Trivia Page</title>
+  </head>
+  <body>
+    <h1>Trivia:</h1>
+    <table style="width:500px" border="1px solid black">
+      <tr>
+        <th>Category</th>
+        <th>Type</th>
+        <th>Difficulty</th>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+      {% for item in collection %}
+      <tr>
+        <td>{{item['category']}}</td>
+        <td>{{item['type']}}</td>
+        <td>{{item['difficulty']}}</td>
+        <td>{{item['question']}}</td>
+        <td>{{item['correct_answer']}}</td>
+      </tr>
+      {% endfor %}
+  </body>
+</html>

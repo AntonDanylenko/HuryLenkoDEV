@@ -10,14 +10,30 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    key = "3jCeyqY6wdYGtAWft"
-    url = "http://api.airvisual.com/v2/city?city=Los%20Angeles&state=California&country=USA&key="
-    full = url + key
-    response = urllib.request.urlopen(full)
+    return render_template('landing.html')
+
+@app.route('/dogs')
+def dog():
+    response = urllib.request.urlopen("https://dog.ceo/api/breeds/image/random")
     respRead = response.read()
     data = json.loads(respRead)
-    print(data)
-    return render_template('app.html', collection = data['data'])
+    return render_template('dogs.html', pic = data['message'])
+
+@app.route('/books')
+def book():
+    response = urllib.request.urlopen("https://www.googleapis.com/books/v1/volumes?q=isbn:0747532699")
+    respRead = response.read()
+    data = json.loads(respRead)
+    #print(data)
+    return render_template('books.html', collection = data['items'])
+
+@app.route('/trivia')
+def trivia():
+    response = urllib.request.urlopen("https://opentdb.com/api.php?amount=10")
+    respRead = response.read()
+    data = json.loads(respRead)
+    #print(data)
+    return render_template('trivia.html', collection = data['results'])
 
 if __name__ == "__main__":
     app.debug = True
