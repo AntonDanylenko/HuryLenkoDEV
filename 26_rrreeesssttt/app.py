@@ -1,8 +1,3 @@
-# Anton Danylenko
-# SoftDev1 pd8
-# K26 -- Getting More REST
-# 2018-11-15
-
 import urllib, json
 
 from flask import Flask, render_template
