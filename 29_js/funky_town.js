@@ -35,6 +35,12 @@ var randomStudent = () => {
 var b0 = document.getElementById("b0");
 var b1 = document.getElementById("b1");
 var b2 = document.getElementById("b2");
-b0.addEventListener('click', console.log(fibonacci(5)));
-b1.addEventListener('click', console.log(gcd(15, 255)));
-b2.addEventListener('click', console.log(randomStudent()));
+b0.addEventListener('click', function(){
+  console.log(fibonacci(5));
+});
+b1.addEventListener('click', function(){
+  console.log(gcd(15, 255))
+});
+b2.addEventListener('click', function(){
+  console.log(randomStudent())
+});
