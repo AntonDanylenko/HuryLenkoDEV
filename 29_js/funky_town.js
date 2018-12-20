@@ -33,13 +33,27 @@ var randomStudent = () => {
 }
 
 var b0 = document.getElementById("b0");
+var b0val = document.getElementById("b0val").value;
 var b1 = document.getElementById("b1");
+var b1val0 = document.getElementById("b1val0").value;
+var b1val1 = document.getElementById("b1val1").value;
 var b2 = document.getElementById("b2");
 b0.addEventListener('click', function(){
-  console.log(fibonacci(5));
+  console.log(b0val);
+  if (b0val == null || b0val<0){
+    console.log(fibonacci(5));
+  }
+  else {
+    console.log(fibonacci(b0val));
+  }
 });
 b1.addEventListener('click', function(){
-  console.log(gcd(15, 255))
+  if (b1val0 == null || b1val1 == null){
+    console.log("gcd(15, 255) = " + gcd(15, 255));
+  }
+  else {
+    console.log("gcd("+b1val0+", "+b1val1+")" + gcd(b1val0, b1val1));
+  }
 });
 b2.addEventListener('click', function(){
   console.log(randomStudent())
