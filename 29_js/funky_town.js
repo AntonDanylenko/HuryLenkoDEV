@@ -1,4 +1,8 @@
-//DSONG AND AD
+/*Team MAD - Maryann Foley,Anton Danylenko
+SoftDev1 pd8
+K28 -- Sequential Progression
+2018-12-18
+*/
 
 var fibonacci = (n) => {
   if (n == 0)
@@ -34,27 +38,34 @@ var randomStudent = () => {
 
 var b0 = document.getElementById("b0");
 var b0val = document.getElementById("b0val").value;
+console.log(b0val)
 var b1 = document.getElementById("b1");
 var b1val0 = document.getElementById("b1val0").value;
 var b1val1 = document.getElementById("b1val1").value;
 var b2 = document.getElementById("b2");
 b0.addEventListener('click', function(){
+
+  var b0val = document.getElementById("b0val").value;
   console.log(b0val);
-  if (b0val == null || b0val<0){
-    console.log(fibonacci(5));
-  }
-  else {
+  if (b0val == undefined ||  b0val == "" || b0val == null || b0val<0){
+    p0.innerHTML="Bad input";
+  } else {
     console.log(fibonacci(b0val));
+    p0.innerHTML=fibonacci(b0val);
   }
 });
 b1.addEventListener('click', function(){
-  if (b1val0 == null || b1val1 == null){
+  var b1val0 = document.getElementById("b1val0").value;
+  var b1val1 = document.getElementById("b1val1").value;
+  if (b1val1 == undefined || b1val1 == "" || b1val0 == "" || b1val0 == undefined || b1val0 == null || b1val1 == null){
     console.log("gcd(15, 255) = " + gcd(15, 255));
+    p1.innerHTML="Bad input";
   }
   else {
     console.log("gcd("+b1val0+", "+b1val1+")" + gcd(b1val0, b1val1));
+    p1.innerHTML=gcd(b1val0, b1val1);
   }
 });
 b2.addEventListener('click', function(){
-  console.log(randomStudent())
+  p2.innerHTML=randomStudent();
 });
