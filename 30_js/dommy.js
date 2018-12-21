@@ -62,10 +62,22 @@ var addFib = function(e){
   currentFibIndex++;
 };
 
+var fib2 = function(n){
+  var result = [0,1];
+  for (var i = 2; i<=n; i++){
+    result.push(result[i-2] + result[i-1]);
+  }
+  return result[n];
+};
+
 var addFib2 = function(e){
   console.log(e);
-
+  var list = document.getElementById("fiblist");
+  var item = document.createElement("li");
+  item.innerHTML = fib2(e);
+  list.appendChild(item);
+  currentFibIndex++;
 };
 
 var fb = document.getElementById("fb");
-fb.addEventListener("click", function(){addFib(currentFibIndex)});
+fb.addEventListener("click", function(){addFib2(currentFibIndex)});
