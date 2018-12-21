@@ -3,11 +3,11 @@ var changeHeading = function(e){
   var h = document.getElementById("h");
   h.innerHTML = e;
   // console.log("changeHeading "+ e);
-}
+};
 
 var removeItem = function(e){
   e.remove();
-}
+};
 
 var lis = document.getElementsByTagName("li");
 
@@ -18,7 +18,7 @@ for (var i=0; i<lis.length; i++){
   lis[i].addEventListener('mouseover', function(){changeHeading("Item " + this.getAttribute("val"))});
   lis[i].addEventListener('mouseout', function(){changeHeading("Hello World!")});
   lis[i].addEventListener('click', function(){removeItem(this)});
-}
+};
 
 /*for (var i=0; i<lis.length; i++){
   (function(){
@@ -31,12 +31,41 @@ for (var i=0; i<lis.length; i++){
 
 var addItem = function(e){
   var list = document.getElementById("theList");
-  //console.log(list);
   var item = document.createElement("li");
-  item.innerHtml = 'WORD';
+  item.innerHTML = "WORD";
   list.appendChild(item);
-  //document.getElementById("theList").appendChild(item);
-}
+  item.addEventListener('mouseover', function(){changeHeading("WORD")});
+  item.addEventListener('mouseout', function(){changeHeading("Hello World!")});
+  item.addEventListener('click', function(){removeItem(this)});
+};
 
 var button = document.getElementById("b");
 button.addEventListener('click', addItem);
+
+var fib = function(n) {
+  if (n<2){
+    return 1;
+  }
+  else {
+    return fib(n-1) + fib(n-2);
+  }
+};
+
+var currentFibIndex = 0;
+
+var addFib = function(e){
+  console.log(e);
+  var list = document.getElementById("fiblist");
+  var item = document.createElement("li");
+  item.innerHTML = fib(e);
+  list.appendChild(item);
+  currentFibIndex++;
+};
+
+var addFib2 = function(e){
+  console.log(e);
+
+};
+
+var fb = document.getElementById("fb");
+fb.addEventListener("click", function(){addFib(currentFibIndex)});
