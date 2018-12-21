@@ -81,3 +81,17 @@ var addFib2 = function(e){
 
 var fb = document.getElementById("fb");
 fb.addEventListener("click", function(){addFib2(currentFibIndex)});
+
+var num = 0;
+
+var addExtra = function(e){
+  console.log(e);
+  var list = document.getElementById("extraList");
+  var item = document.createElement("li");
+  item.innerHTML = e*e*e;
+  list.appendChild(item);
+  num++;
+}
+
+var fb = document.getElementById("e");
+fb.addEventListener("click", function(){addExtra(num)});
